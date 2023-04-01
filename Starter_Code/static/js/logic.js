@@ -38,8 +38,7 @@ function circleSize(magnitude) {
     if (magnitude === 0) {
         return 1;
     }
-
-    return magnitude * 30000;
+    return magnitude * 4;
 }
 
 L.geoJson(data, {
@@ -53,18 +52,22 @@ L.geoJson(data, {
 }).addTo(map);
 
 function circleColor(depth) {
-    var color = "#FFEDA0";
+    //var color = "#FFEDA0";
     switch(true) {
-        case (depth < 10): color = "#FFEDA0";
-        break;
-        case (depth < 30): color = "#FEB24C";
-        break;
-        case (depth < 50): color = "#FD8D3C";
-        break;
-        case (depth < 70): color = "#E31A1C";
-        break;
+        case depth < 10:
+            return "#FFEDA0";
+        
+        case depth < 30: 
+            return "#FEB24C";
+        
+        case depth < 50: 
+            return"#FD8D3C";
+        
+        case depth < 70:
+            return "#E31A1C";
+        
     }
-}
+};
 
 // Create a legend
 var legend = L.control({
